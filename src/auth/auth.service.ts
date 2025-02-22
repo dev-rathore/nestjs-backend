@@ -22,7 +22,7 @@ export class AuthService {
       where: { username },
     });
     if (existingUser) {
-      throw new ConflictException('Username already exists');
+      throw new ConflictException('User already exists');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -36,7 +36,14 @@ export class AuthService {
 
   async login(username: string, password: string) {
     const user = await this.userRepository.findOne({ where: { username } });
-    if (!user || !(await bcrypt.compare(password, user.password))) {
+
+    if (!user) {
+      throw new UnauthorizedException("User doesn't exist");
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+
+    if (!isPasswordValid) {
       throw new UnauthorizedException('Invalid credentials');
     }
 
