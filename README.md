@@ -2,7 +2,7 @@
 
 Production server is live at [https://nestjs-backend-k9r2.onrender.com/](https://nestjs-backend-k9r2.onrender.com/)
 
-**Swagger Docs** - [/api/docs](https://nestjs-backend-k9r2.onrender.com/api/doc)
+**Swagger Docs** - [/api/docs](https://nestjs-backend-k9r2.onrender.com/api/docs)
 
 **Register API** - [/auth/register](https://nestjs-backend-k9r2.onrender.com/auth/register)
 
