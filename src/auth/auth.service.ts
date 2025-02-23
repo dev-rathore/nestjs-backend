@@ -5,10 +5,11 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from './user.entity';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { instanceToPlain } from 'class-transformer';
+
+import { User, UserRole } from './user.entity';
 
 @Injectable()
 export class AuthService {
@@ -17,7 +18,11 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async register(username: string, password: string) {
+  async register(
+    username: string,
+    password: string,
+    role: UserRole = UserRole.USER,
+  ) {
     const existingUser = await this.userRepository.findOne({
       where: { username },
     });
@@ -29,6 +34,7 @@ export class AuthService {
     const user = this.userRepository.create({
       username,
       password: hashedPassword,
+      role,
     });
 
     return this.userRepository.save(user);
@@ -42,12 +48,15 @@ export class AuthService {
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
-
     if (!isPasswordValid) {
       throw new UnauthorizedException('Invalid credentials');
     }
 
-    const token = this.jwtService.sign({ userId: user.id });
+    const token = this.jwtService.sign({
+      userId: user.id,
+      role: user.role,
+    });
+
     return { token };
   }
 
