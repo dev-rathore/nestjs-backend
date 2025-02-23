@@ -1,7 +1,5 @@
 # Nest.js Backend
 
-## Production Server
-
 Production server is live at [https://nestjs-backend-k9r2.onrender.com/](https://nestjs-backend-k9r2.onrender.com/)
 
 **Swagger Docs** - [/api/docs](https://nestjs-backend-k9r2.onrender.com/api/doc)
@@ -11,6 +9,8 @@ Production server is live at [https://nestjs-backend-k9r2.onrender.com/](https:/
 **Login API** - [/auth/login](https://nestjs-backend-k9r2.onrender.com/auth/login)
 
 **Get User API** - [/auth/me](https://nestjs-backend-k9r2.onrender.com/auth/me)
+
+**Admin API** - [/auth/admin](https://nestjs-backend-k9r2.onrender.com/auth/admin) (Only accessible by users with role admin)
 
 ## Prerequisites
 
@@ -96,3 +96,10 @@ npm run test:e2e
 # test coverage
 npm run test:cov
 ```
+
+## Tradeoffs
+
+- Logout functionality is implemented on the frontend side.
+- Strict password validation is added right now only at the frontend side and can be added at the backend through auth DTO e.g. Password must be at least 8 characters long and include an uppercase letter, lowercase letter, number, and special character.
+- Rate limiting and test cases are not implemented.
+- Containerized deployment through docker is not implemented.
