@@ -1,4 +1,4 @@
-import { IsEnum, IsString, MinLength } from 'class-validator';
+import { IsEnum, IsString, MinLength, ValidateIf } from 'class-validator';
 import { UserRole } from '../user.entity';
 
 export class AuthDto {
@@ -9,6 +9,7 @@ export class AuthDto {
   @MinLength(8, { message: 'Password must be at least 8 characters long' })
   password: string;
 
+  @ValidateIf((obj) => obj.role !== undefined)
   @IsEnum(UserRole, { message: 'Role must be either user or admin' })
-  role: UserRole;
+  role?: UserRole;
 }
