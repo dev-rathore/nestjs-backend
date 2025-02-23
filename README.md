@@ -64,9 +64,13 @@
    npm run start:prod
    ```
 
+6. **Server is live 🎉**
+
+   Check server running live at [http://localhost:8080](http://localhost:8080)
+
 ## Swagger Docs
 
-- Check Swagger docs at `http://localhost:8080/api/docs`
+Check Swagger docs at [http://localhost:8080/api/docs](http://localhost:8080/api/docs)
 
 ## Run tests
 
