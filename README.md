@@ -1,5 +1,17 @@
 # Nest.js Backend
 
+## Production Server
+
+Production server is live at [https://nestjs-backend-k9r2.onrender.com/](https://nestjs-backend-k9r2.onrender.com/)
+
+**Swagger Docs** - [/api/docs](https://nestjs-backend-k9r2.onrender.com/api/doc)
+
+**Register API** - [/auth/register](https://nestjs-backend-k9r2.onrender.com/auth/register)
+
+**Login API** - [/auth/login](https://nestjs-backend-k9r2.onrender.com/auth/login)
+
+**Get User API** - [/auth/me](https://nestjs-backend-k9r2.onrender.com/auth/me)
+
 ## Prerequisites
 
 - Install [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/)
