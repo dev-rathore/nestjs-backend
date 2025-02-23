@@ -9,6 +9,6 @@ export class AuthDto {
   @MinLength(8, { message: 'Password must be at least 8 characters long' })
   password: string;
 
-  @IsEnum(UserRole, { message: 'Role must be either "user" or "admin"' })
+  @IsEnum(UserRole, { message: 'Role must be either user or admin' })
   role: UserRole;
 }
